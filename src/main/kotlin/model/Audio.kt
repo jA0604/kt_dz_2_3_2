@@ -1,5 +1,7 @@
 package model
 
+import model.attachments.Attachment
+
 data class Audio (
     val id: Int,
     val ownerId: Int,
@@ -13,9 +15,8 @@ data class Audio (
     val date: Int,
     val noSearch: Boolean,
     val isHq: Boolean,
-    override val type: String = "audio",
-    override val attach: Attachment? = null
-) : Attachment
+
+)
 {
 
 }

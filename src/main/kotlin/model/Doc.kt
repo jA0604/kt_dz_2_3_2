@@ -11,11 +11,7 @@ class Doc (
     val date: Long,
     val typeDoc: TypeDoc,
     val preview: Preview?,
-
-    override val type: String = "doc",
-    override val attach: Attachment? = null
-
-) : Attachment
+)
 {
 
 }

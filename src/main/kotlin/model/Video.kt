@@ -1,5 +1,7 @@
 package model
 
+import model.attachments.Attachment
+
 data class Video (
     val id: Int,
     val ownerId: Int,
@@ -44,9 +46,9 @@ data class Video (
     val spectators: Int,
     val likes: LikesVideo,
     val reposts: Repost,
-    override val type: String = "video",
-    override val attach: Attachment? = null
-) : Attachment
+
+)
 {
+
 
 }

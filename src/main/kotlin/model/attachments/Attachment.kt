@@ -1,7 +1,6 @@
-package model
+package model.attachments
 
 interface Attachment {
     val type: String
-    val attach: Attachment?
 }
 

@@ -1,4 +1,5 @@
 import model.*
+import model.attachments.Attachment
 
 fun viewPost(post: Post) {
 
@@ -36,14 +37,14 @@ fun viewPost(post: Post) {
 fun getPostAttachment(post: Post) =
     post.attachments ?: "No attachment"
 
-fun attachIs(attach: Attachment) = when {
-    (attach is Note) -> attach.text
-    (attach is Photo) -> attach.text
-    (attach is Video) -> attach.title
-    (attach is Doc) -> attach.title
-    (attach is Audio) -> attach.title
-    else -> "Unknown"
-}
+//fun attachIs(attach: Attachment) = when {
+//    (attach is Note) -> attach.text
+//    (attach is Photo) -> attach.text
+//    (attach is Video) -> attach.title
+//    (attach is Doc) -> attach.title
+//    (attach is Audio) -> attach.title
+//    else -> "Unknown"
+//}
 
 
 

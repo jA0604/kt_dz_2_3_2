@@ -1,4 +1,8 @@
 import model.*
+import model.attachments.Attachment
+import model.attachments.NoteAttachment
+import model.attachments.PhotoAttachment
+import model.attachments.VideoAttachment
 import org.junit.Assert.*
 import org.junit.Test
 import service.WallService
@@ -451,7 +455,7 @@ class MainKtTest {
                            reposts = Repost()
                            )
 
-        val post = Post (
+        var post = Post (
             ownerId = 0,
             fromId = 0,
             createdBy = 0,
@@ -475,16 +479,24 @@ class MainKtTest {
             likes = Likes(),
             reposts = Repost(),
             views = Views(),
-            attachments = arrayOf(note, photo, video)
+            attachments = emptyArray() //arrayOf() //note, photo, video)
         )
         val expected = "Test text on Note 1"
 
-        val attNote = post.attachments?.get(0)
-        val attPhoto = post.attachments?.get(1)
-        val attVideo = post.attachments?.get(2)
+        val attNote = NoteAttachment(value = note)
+        post = post.copy(attachments = post.attachments?.plus(attNote))
 
-        if (attNote is Note) {
-            val result = attNote.text
+        val attPhoto = PhotoAttachment(value = photo)
+        post = post.copy(attachments = post.attachments?.plus(attPhoto))
+
+        val attVideo = VideoAttachment(value = video)
+        post = post.copy(attachments = post.attachments?.plus(attVideo))
+
+
+
+        val noteAttachment = post.attachments?.get(0)
+        if (noteAttachment is NoteAttachment) {
+            val result = noteAttachment.value.text
             assertEquals(expected, result)
         }
 
@@ -511,7 +523,7 @@ class MainKtTest {
             reposts = Repost()
         )
 
-        val post = Post (
+        var post = Post (
             ownerId = 0,
             fromId = 0,
             createdBy = 0,
@@ -535,18 +547,26 @@ class MainKtTest {
             likes = Likes(),
             reposts = Repost(),
             views = Views(),
-            attachments = arrayOf(note, photo, video)
+            attachments = emptyArray()
         )
         val expected = "Test text on Photo 1"
 
-        val attNote = post.attachments?.get(0)
-        val attPhoto = post.attachments?.get(1)
-        val attVideo = post.attachments?.get(2)
+        val attNote = NoteAttachment(value = note)
+        post = post.copy(attachments = post.attachments?.plus(attNote))
 
-        if (attPhoto is Photo) {
-            val result = attPhoto.text
+        val attPhoto = PhotoAttachment(value = photo)
+        post = post.copy(attachments = post.attachments?.plus(attPhoto))
+
+        val attVideo = VideoAttachment(value = video)
+        post = post.copy(attachments = post.attachments?.plus(attVideo))
+
+        val photoAttachment = post.attachments?.get(0)
+        if (photoAttachment is PhotoAttachment) {
+            val result = photoAttachment.value.text
             assertEquals(expected, result)
         }
+
+
 
     }
 

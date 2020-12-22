@@ -1,6 +1,6 @@
 package model
 
-import model.CopyImage
+import model.attachments.Attachment
 
 data class Photo (
 
@@ -14,10 +14,7 @@ data class Photo (
     val sizes: Array<CopyImage>,
     val width: Int,
     val height: Int,
-    override val type: String = "photo",
-    override val attach: Attachment? = null
-
-    ) : Attachment
+    )
 {
 
 }

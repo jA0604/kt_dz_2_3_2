@@ -10,10 +10,7 @@ data class Note (
     val comments: Int,
     val readComments: Int,
     val viewUrl: String,
-    override val type: String = "note",
-    override val attach: Attachment? = null
-
-) : Attachment
+)
 {
 
 }

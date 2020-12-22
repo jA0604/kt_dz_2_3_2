@@ -1,5 +1,7 @@
 package model
 
+import model.attachments.Attachment
+
 data class Post (
     val id: Int = 0,
     val ownerId: Int,
